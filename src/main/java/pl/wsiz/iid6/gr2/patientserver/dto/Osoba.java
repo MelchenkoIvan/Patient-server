@@ -13,7 +13,17 @@ public class Osoba {
     private String mail;
     private String nrTelefonu;
     private String plec;
+    private int nrUbiezpieczenia;
 
+    public Osoba(String imie, String nazwisko, String pesel, int nrUbiezpieczenia) {
+        this.imie = imie;
+        this.nazwisko = nazwisko;
+        this.pesel = pesel;
+        this.nrUbiezpieczenia = nrUbiezpieczenia;
+    }
+    public int getNrUbiezpieczenia() {
+        return nrUbiezpieczenia;
+    }
     public int getWiek(){
         // wyznczamy wiek Rok obecny - rok urodzenia
         int wiek =20;
