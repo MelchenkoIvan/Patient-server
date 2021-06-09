@@ -19,9 +19,7 @@ public class MedicineController {
 
     @GetMapping(path ="/findMedicine")
     @ResponseBody
-    public Lek getMedine(@RequestParam String name){
-
-
+        public Lek getMedine(@RequestParam String name){
         return lekService.findLek(name);
     }
     @GetMapping(path ="/findAllMedicine")

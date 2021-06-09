@@ -3,11 +3,13 @@ package pl.wsiz.iid6.gr2.patientserver.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pl.wsiz.iid6.gr2.patientserver.dto.Pacjent;
+import pl.wsiz.iid6.gr2.patientserver.entity.PatientEntity;
 import pl.wsiz.iid6.gr2.patientserver.service.PatientService;
 
 @Controller
@@ -45,4 +47,29 @@ public class PatientController {
     public String patientByName(@RequestParam String Name){
         return patientService.findByLastName(Name);
     }
+
+
+
+    @RequestMapping(value = "/pacjent")
+    public String pacjent(final ModelMap model, Long idP)
+    {
+        model.addAttribute("nr", idP); Pacjent patient = patientService.findbyId(idP);
+        model.addAttribute("imie", patient.getImie());
+        model.addAttribute("nazwisko", (patient.getNazwisko()));
+        model.addAttribute("pesel", (patient.getPesel()));
+        return "pacjent.html";
+    }
+
+    
+
+    @GetMapping(path = "/AllPatint")
+    @ResponseBody
+    public String allPatient() {
+        String s = "";
+        for (PatientEntity x : patientService.findAllPatient()) {
+            s = s + "<p>" + x.getLastName() + " " + x.getFirstName() + " " + x.getPesel() + "</p>";
+        }
+        return s;
+    }
 }
+

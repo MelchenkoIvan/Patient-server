@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface PatientRepositry extends CrudRepository<PatientEntity,Long> {
     List<PatientEntity> findAllByLastName(String lastName);
+    List<PatientEntity> findAll();
 
 }
