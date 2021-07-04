@@ -13,7 +13,16 @@ public class OperacjaEntity {
     private String nazwaOper;
     private String typOperacji;
     private String liekarz;
+    private String image;
     private double koszt_operacji;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public OperacjaEntity() {
     }
@@ -23,6 +32,13 @@ public class OperacjaEntity {
         this.nazwaOper = imie;
         this.typOperacji = typ_operacji;
         this.liekarz = lerkarz;
+        this.koszt_operacji = koszt_operacji;
+    }
+
+    public OperacjaEntity(String nazwaOper, String typOperacji, String liekarz, double koszt_operacji) {
+        this.nazwaOper = nazwaOper;
+        this.typOperacji = typOperacji;
+        this.liekarz = liekarz;
         this.koszt_operacji = koszt_operacji;
     }
 

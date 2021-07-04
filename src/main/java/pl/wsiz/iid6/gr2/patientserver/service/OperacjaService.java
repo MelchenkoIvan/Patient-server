@@ -30,7 +30,7 @@ public class OperacjaService {
     public List<Operacja> findAll(){
         List<Operacja> lista = new ArrayList<>();
         for(OperacjaEntity l:operacjaRepository.findAll()) {
-            lista.add(new Operacja(l.getNazwaOper(),l.getTypOperacji(),l.getLiekarz(),l.getKoszt_operacji()));
+            lista.add(new Operacja(l.getNazwaOper(),l.getTypOperacji(),l.getLiekarz(),l.getKoszt_operacji() ,l.getImage()));
         }
         return lista;
     }

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <link href="/Style/styles.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- semantic UI -->
+    <link rel="stylesheet" type='text/css'
+          href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <title>Operations</title>
+</head>
+<body>
+<!--Start: Nav  -->
+<div class="ui fixed borderless huge menu">
+
+    <div class="ui container grid">
+
+        <!--Start: Desktop Nav-->
+        <div class="computer only row">
+            <a class="header item">WSIZ Medical</a>
+            <a href="http://localhost:8081/" class="active item">Operacje</a>
+            <a href="http://localhost:8081/patient/patientsall" class="item">Pacjenty</a>
+            <a href="http://localhost:8081/medicine/findAllMedicine" class="item">Leki</a>
+            <a class="ui dropdown item">Dropdown<i class="dropdown icon"></i></a>
+            <!-- Start: Popup -->
+            <div class="ui fluid popup bottom left transition hidden"
+                 style="top: 553px; left: 1px; bottom: auto; right: auto; width: 657px;">
+                <div class="ui four column relaxed divided grid">
+                    <div class="column">
+                        <h4 class="ui header">Leki</h4>
+                        <div class="ui link list">
+                            <a class="item">W kapsułkach żelatynowych </a>
+                            <a class="item">Kruszanki</a>
+                            <a class="item">Napary i odwary</a>
+                            <a class="item">Syropy</a>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h4 class="ui header">Pacjent</h4>
+                        <div class="ui link list">
+                            <a class="item">Ubezpieczenia</a>
+                            <a class="item">Skierowanie</a>
+                            <a class="item">Badanie</a>
+                            <a class="item">recepty</a>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h4 class="ui header">Departaments</h4>
+                        <div class="ui link list">
+                            <a class="item">OUTPATIENT DEPARTMENT</a>
+                            <a class="item">INPATIENT DEPARTMENT</a>
+                            <a class="item">DIAGNOSTICS</a>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <h4 class="ui header">Special offers</h4>
+                        <div class="ui link list">
+                            <a class="item">PACKAGED OFFERS IN GYNECOLOGY</a>
+                            <a class="item">DOCTOR’S CONSULTATION FOR ONLY 550 UAH!</a>
+                            <a class="item">INSTANT VENEERS – FROM 2200 UAH</a>
+                            <a class="item">"WSIZ MEDICAL» CLINIC’S LOYALTY PROGRAM</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End: Popup -->
+
+            <div class="right menu">
+
+
+                <a class="ui dropdown item">Select Country<i class="dropdown icon"></i>
+                    <div class="menu">
+                        <div class="item">
+                            <i class="ua flag"></i>
+                            Ukraine
+                        </div>
+                        <div class="item">
+                            <i class="pl flag"></i>
+                            Poland
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--End: Desktop Nav-->
+<div class="ui container">
+    <div style="padding-top:60px;" class="ui three column grid">
+        <th:block th:each="obj : ${operations}">
+            <div class="column">
+
+                <div class="ui fluid card ">
+                    <div class="image ">
+
+                        <img style="height: 350px;width: 100%; object-fit: cover;" th:src="${obj.image}">
+
+                    </div>
+
+                    <div class="content">
+                        <div class="header label" th:text="${obj.nazwaOper}">
+                        </div>
+                        <div class="ui divider"></div>
+
+                        <div class="description">
+                            <tr>
+                                <td th:text="${obj.typOperacji}">...</td>
+                            </tr>
+                        </div>
+
+                    </div>
+                    <div class="extra content">
+
+                        <a>
+                            <i class="money bill alternate outline icon"></i>
+
+                            <tr>
+                                <td th:text="${obj.koszt_operacji}">...</td>
+                            </tr>
+                        </a>
+                        <span class="right floated">
+                            Lekarz -
+                            <tr>
+                                <td th:text="${obj.liekarz}">...</td>
+
+                            </tr>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </th:block>
+    </div>
+</div>
+</div>
+</div>
+<script>
+        $(document).ready(function() {
+  $('.computer.only .dropdown.item')
+    .popup({
+      inline     : true,
+      hoverable  : true,
+      position   : 'bottom left',
+      delay: {
+        show: 300,
+        hide: 800
+      }
+    })
+  ;
+  $('.ui.dropdown').dropdown();
+  $('.ui.accordion').accordion();
+
+  // bind "hide and show vertical menu" event to top right icon button
+  $('.ui.toggle.button').click(function() {
+    $('.ui.vertical.menu').toggle("250", "linear")
+  });
+});
+
+
+</script>
+
+</body>
+</html>

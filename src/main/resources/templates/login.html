@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>LOGOWANIE DO SYSTEMU WSIZ Medical</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" type='text/css'
+          href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+</head>
+<body>
+<div class="ui container" style="width:500px; margin:0 auto;">
+    <div style="margin-top: 250px" class="ui segment ">
+<div th:if="${param.error}"> Invalid username and password. </div>
+<div th:if="${param.logout}"> You have been logged out. </div>
+<form class="ui form" th:action="@{/login}" method="post">
+    <div><label> User Name : <input type="text" name="username"/>
+    </label></div> <div><label> Password: <input type="password" name="password"/>
+</label></div>
+    <div style="padding-top: 25px"><input  class="ui button primary" type="submit" value="Sign In"/></div>
+</form>
+    </div>
+</div>
+</body>
+</html>

@@ -65,15 +65,7 @@ public class PatientController {
 
 
 
-    @GetMapping(path = "/AllPatint")
-    @ResponseBody
-    public String allPatient() {
-        String s = "";
-        for (PatientEntity x : patientService.findAllPatient()) {
-            s = s + "<p>" + x.getLastName() + " " + x.getFirstName() + " " + x.getPesel() + "</p>";
-        }
-        return s;
-    }
+
 
     @GetMapping(path="/patientsall")
     public String listPatients(final ModelMap model) throws Exception {

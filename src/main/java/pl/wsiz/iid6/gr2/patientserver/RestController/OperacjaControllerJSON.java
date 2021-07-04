@@ -18,6 +18,7 @@ public class OperacjaControllerJSON {
     private OperacjaService operacjaService;
     @GetMapping(path="/all", produces = "application/json")
     public List<Operacja> allLek(){
+
         return operacjaService.findAll();
     }
 }

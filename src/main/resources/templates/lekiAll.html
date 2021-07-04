@@ -19,10 +19,10 @@
     <!--Start: Desktop Nav-->
     <div class="computer only row">
       <a class="header item">WSIZ Medical</a>
-      <a href="http://localhost:8081/" class="active item">Operacje</a>
+      <a href="http://localhost:8081/" class=" item">Operacje</a>
       <a href="http://localhost:8081/patient/patientsall" class="item">Pacjenty</a>
       <a href="http://localhost:8081/medicine/findAllMedicine" class="item">Leki</a>
-      <a class="ui dropdown item">Dropdown<i class="dropdown icon"></i></a>
+      <a class="ui dropdown item">Info<i class="dropdown icon"></i></a>
       <!-- Start: Popup -->
       <div class="ui fluid popup bottom left transition hidden"
            style="top: 553px; left: 1px; bottom: auto; right: auto; width: 657px;">
@@ -90,7 +90,7 @@
 <!--End: Desktop Nav-->
 <div class="ui container">
   <div style="padding-top:60px;" class="ui four column grid">
-    <th:block th:each="obj : ${patients}">
+    <th:block th:each="obj : ${leki}">
       <div class="column">
 
         <div class="ui fluid card ">
@@ -99,19 +99,26 @@
           <div class="content">
             <div class="header label" >
               <tr>
-                <td th:text="${obj.firstName}">...</td>
-              </tr>
-
-              <tr>
-                <td th:text="${obj.lastName}">...</td>
+                <td th:text="${obj.nazwa}">...</td>
               </tr>
             </div>
             <div class="ui divider"></div>
 
             <div class="description">
+              Producent -
               <tr>
-                <td th:text="${obj.pesel}">...</td>
+                <td th:text="${obj.producent}">...</td>
               </tr>
+              <div >
+                <span class="right floated" th:if="${obj.recept}">
+                  Potrzebna recepta <i class="clipboard list icon"></i>
+                </span>
+                <span class="right floated" th:if="${!obj.recept}">
+                  Bez recepty <i class="clipboard list icon"></i>
+                </span>
+              </div>
+
+
             </div>
 
           </div>

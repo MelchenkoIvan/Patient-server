@@ -6,9 +6,9 @@ public class Lek {
     private String producent;
 
 
-    public Lek(String nazwa, Boolean refundowany, String producent) {
+    public Lek(String nazwa, Boolean recept, String producent) {
         this.nazwa = nazwa;
-        this.recept = refundowany;
+        this.recept = recept;
         this.producent = producent;
     }
 
@@ -27,12 +27,12 @@ public class Lek {
         this.nazwa = nazwa;
     }
 
-    public Boolean getRefundowany() {
+    public Boolean getRecept() {
         return recept;
     }
 
-    public void setRefundowany(Boolean refundowany) {
-        this.recept = refundowany;
+    public void setRecept(Boolean recept) {
+        this.recept = recept;
     }
 
     public String getProducent() {
