@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import pl.wsiz.iid6.gr2.patientserver.dto.Lek;
 import pl.wsiz.iid6.gr2.patientserver.service.LekService;
 
+import java.util.List;
+
 
 @Controller
 @RequestMapping(value = "/medicine")
@@ -17,15 +19,11 @@ public class MedicineController {
     @Autowired
     private LekService lekService;
 
-    @GetMapping(path ="/findMedicine")
-    @ResponseBody
-        public Lek getMedine(@RequestParam String name){
-        return lekService.findLek(name);
-    }
+
     @GetMapping(path ="/findAllMedicine")
     @ResponseBody
-    public String getAllLek(){
-        return lekService.getallLek();
+    public List<Lek> getAllLek(){
+        return lekService.findAll();
     }
 
 }

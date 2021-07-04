@@ -12,6 +12,8 @@ import pl.wsiz.iid6.gr2.patientserver.dto.Pacjent;
 import pl.wsiz.iid6.gr2.patientserver.entity.PatientEntity;
 import pl.wsiz.iid6.gr2.patientserver.service.PatientService;
 
+import java.util.List;
+
 @Controller
 @RequestMapping(value = "/patient")
 public class PatientController {
@@ -51,16 +53,17 @@ public class PatientController {
 
 
     @RequestMapping(value = "/pacjent")
-    public String pacjent(final ModelMap model, Long idP)
+    public String pacjent( Long idP ,final ModelMap model)
     {
-        model.addAttribute("nr", idP); Pacjent patient = patientService.findbyId(idP);
+        model.addAttribute("nr", idP);
+            Pacjent patient = patientService.findbyId(idP);
         model.addAttribute("imie", patient.getImie());
         model.addAttribute("nazwisko", (patient.getNazwisko()));
         model.addAttribute("pesel", (patient.getPesel()));
         return "pacjent.html";
     }
 
-    
+
 
     @GetMapping(path = "/AllPatint")
     @ResponseBody
@@ -70,6 +73,13 @@ public class PatientController {
             s = s + "<p>" + x.getLastName() + " " + x.getFirstName() + " " + x.getPesel() + "</p>";
         }
         return s;
+    }
+
+    @GetMapping(path="/patientsall")
+    public String listPatients(final ModelMap model) throws Exception {
+        List<PatientEntity> allPatient = patientService.findAllPatient();
+        model.addAttribute("patients", allPatient);
+        return "pacjentAll.html";
     }
 }
 

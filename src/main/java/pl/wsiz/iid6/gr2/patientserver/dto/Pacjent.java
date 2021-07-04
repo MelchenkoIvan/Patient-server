@@ -11,6 +11,8 @@ public class Pacjent extends Osoba {
     private List<String> leki;
     private List<Recepta> recepty;
 
+
+
     public Pacjent(String imie, String nazwisko, String pesel,int nrUbezpieczenia) {
         super(imie, nazwisko, pesel, nrUbezpieczenia);
     }
